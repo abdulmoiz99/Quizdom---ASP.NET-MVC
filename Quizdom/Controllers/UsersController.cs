@@ -16,6 +16,11 @@ namespace Quizdom.Controllers
         public ActionResult Login()
         {
             return View();
+
+        }
+        public ActionResult ForgotPassword()
+        {
+            return View();
         }
     }
 }
