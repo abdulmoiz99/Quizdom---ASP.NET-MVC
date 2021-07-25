@@ -1,4 +1,5 @@
 ﻿using Quizdom.Models;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -19,10 +20,11 @@ namespace Quizdom.Controllers
         public ActionResult RegisterUser(Users userdetails)
         {
             var db = new dbContext();
+            userdetails.IsActive = true;
+            userdetails.DateCreated = DateTime.Now;
             db.Users.Add(userdetails);
             db.SaveChanges();
-            ModelState.Clear();
-            return View();
+            return View("Login");
         }
         public ActionResult Login()
         {

@@ -144,8 +144,22 @@
     <Compile Include="Migrations\202107250858142_Users_Updated.designer.cs">
       <DependentUpon>202107250858142_Users_Updated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107251155339_QuestionTableAdded.cs" />
+    <Compile Include="Migrations\202107251155339_QuestionTableAdded.designer.cs">
+      <DependentUpon>202107251155339_QuestionTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107251159112_QuestionTableUpdated.cs" />
+    <Compile Include="Migrations\202107251159112_QuestionTableUpdated.designer.cs">
+      <DependentUpon>202107251159112_QuestionTableUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107251200207_MinorChangesInQuestionChoices.cs" />
+    <Compile Include="Migrations\202107251200207_MinorChangesInQuestionChoices.designer.cs">
+      <DependentUpon>202107251200207_MinorChangesInQuestionChoices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\dbContext.cs" />
+    <Compile Include="Models\QuestionChoices.cs" />
+    <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -262,6 +276,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107250858142_Users_Updated.resx">
       <DependentUpon>202107250858142_Users_Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107251155339_QuestionTableAdded.resx">
+      <DependentUpon>202107251155339_QuestionTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107251159112_QuestionTableUpdated.resx">
+      <DependentUpon>202107251159112_QuestionTableUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107251200207_MinorChangesInQuestionChoices.resx">
+      <DependentUpon>202107251200207_MinorChangesInQuestionChoices.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

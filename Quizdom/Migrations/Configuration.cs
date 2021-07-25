@@ -11,7 +11,6 @@
         {
             AutomaticMigrationsEnabled = true;
         }
-
         protected override void Seed(Quizdom.Models.dbContext context)
         {
             //  This method will be called after migrating to the latest version.
