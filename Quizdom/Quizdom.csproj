@@ -140,6 +140,10 @@
     <Compile Include="Migrations\202107241900097_UserTable.designer.cs">
       <DependentUpon>202107241900097_UserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107250858142_Users_Updated.cs" />
+    <Compile Include="Migrations\202107250858142_Users_Updated.designer.cs">
+      <DependentUpon>202107250858142_Users_Updated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\dbContext.cs" />
     <Compile Include="Models\Users.cs" />
@@ -255,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107241900097_UserTable.resx">
       <DependentUpon>202107241900097_UserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107250858142_Users_Updated.resx">
+      <DependentUpon>202107250858142_Users_Updated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
