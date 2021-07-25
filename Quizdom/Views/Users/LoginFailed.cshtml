@@ -1,7 +1,7 @@
 ﻿@model Quizdom.Models.Users
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "LoginFailed";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
@@ -11,14 +11,17 @@
                 <div class="card-body p-0">
                     <div class="row">
                         <div class="col-lg-6 d-none d-lg-flex">
-                            <div class="flex-grow-1 bg-login-image" style="background: url(&quot;assets/img/dogs/3071357.jpg&quot;) center / cover, var(--bs-blue);"></div>
+                            <div class="flex-grow-1 bg-login-image" style="background: url(~/assets/img/dogs/pexels-rodnae-productions-7092339.jpg) center / cover, var(--bs-blue);height: 310px;margin-top: 92px;margin-left: 24px;"></div>
                         </div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h4 class="text-dark mb-4">Welcome Back!</h4>
+                                    <h4 class="text-dark mb-4" style="border-color: rgb(58, 59, 69);">Login Error!</h4>
                                 </div>
-                                <form action="VerifyLogin" method="post" class="user">
+                                <div class="text-center" style="color: rgb(255,0,0);">
+                                    <h4 class="text-dark mb-4" style="font-size: 14px;color: rgb(255,0,0);">You've entered incorrect account credentials, please try again!</h4>
+                                </div>
+                                <form class="user" action="VerifyLogin" method="post">
                                     <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div>
                                     <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
                                     <div class="mb-3">

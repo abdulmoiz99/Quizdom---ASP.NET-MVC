@@ -17,11 +17,15 @@
 <body class="bg-gradient-primary">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
         <div class="container">
-            <a class="navbar-brand" href="index.html" style="color: rgb(51, 51, 51);">Quizdom</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")" style="color: rgb(51, 51, 51);">Quizdom</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"></li>
-                </ul><span class="navbar-text actions"> <a class="login" href="about.html">About</a><a class="login" href="login.html">Log In</a><a class="btn btn-light action-button" role="button" href="register.html" style="background: rgb(78,115,223);">Sign Up</a></span>
+                </ul><span class="navbar-text actions">
+                    <a class="login" href="@Url.Action("About", "Home")">About</a>
+                    <a class="login" href="@Url.Action("Login", "Users")">Log In</a>
+                    <a class="btn btn-light action-button" role="button" href="@Url.Action("Register", "Users")" style="background: rgb(78,115,223);">Sign Up</a>
+                </span>
             </div>
         </div>
     </nav>
