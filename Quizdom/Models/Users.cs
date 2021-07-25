@@ -20,6 +20,8 @@ namespace Quizdom.Models
         [MaxLength(50)]
         public string Email { get; set; }
         public string Password { get; set; }
+
+        
         public DateTime DateCreated { get; set; }
         public bool IsActive { get; set; }
 

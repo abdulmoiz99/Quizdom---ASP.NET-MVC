@@ -166,9 +166,18 @@
     <Compile Include="Migrations\202107251511038_IdRemoved.designer.cs">
       <DependentUpon>202107251511038_IdRemoved.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107251717377_UserIdAdded.cs" />
+    <Compile Include="Migrations\202107251717377_UserIdAdded.designer.cs">
+      <DependentUpon>202107251717377_UserIdAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107251744591_QuizTableAdded.cs" />
+    <Compile Include="Migrations\202107251744591_QuizTableAdded.designer.cs">
+      <DependentUpon>202107251744591_QuizTableAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\dbContext.cs" />
     <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -304,6 +313,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107251511038_IdRemoved.resx">
       <DependentUpon>202107251511038_IdRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107251717377_UserIdAdded.resx">
+      <DependentUpon>202107251717377_UserIdAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107251744591_QuizTableAdded.resx">
+      <DependentUpon>202107251744591_QuizTableAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

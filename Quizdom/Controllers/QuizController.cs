@@ -18,12 +18,15 @@ namespace Quizdom.Controllers
         [HttpPost]
         public ActionResult AddQuestion(Questions questions)
         {
-            questions.DateCreated = DateTime.Now;
-            questions.IsActive = true;
 
-            var db = new dbContext();
-            db.Questions.Add(questions);
-            db.SaveChanges();
+            //var db = new dbContext();
+            //// get existing user with with a particular ID
+            //var sub = db.Users.FirstOrDefault(x => x.ID == Main.UserID);
+
+            //questions.User = sub;
+
+            //db.Questions.Add(questions);
+            //db.SaveChanges();
 
             return View();
         }
