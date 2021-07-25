@@ -11,7 +11,7 @@ namespace Quizdom.Models
         [Key]
         public int ID { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50)] 
         public string FirstName { get; set; }
 
         [MaxLength(50)]
@@ -22,7 +22,6 @@ namespace Quizdom.Models
         public string Password { get; set; }
         public DateTime DateCreated { get; set; }
         public bool IsActive { get; set; }
-
 
     }
 }

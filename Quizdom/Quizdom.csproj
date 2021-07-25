@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuizController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -156,9 +157,12 @@
     <Compile Include="Migrations\202107251200207_MinorChangesInQuestionChoices.designer.cs">
       <DependentUpon>202107251200207_MinorChangesInQuestionChoices.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107251441483_QuestionTableModified.cs" />
+    <Compile Include="Migrations\202107251441483_QuestionTableModified.designer.cs">
+      <DependentUpon>202107251441483_QuestionTableModified.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\dbContext.cs" />
-    <Compile Include="Models\QuestionChoices.cs" />
     <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -250,6 +254,8 @@
     <Content Include="Views\Users\ForgotPassword.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Users\LoginFailed.cshtml" />
+    <Content Include="Views\Quiz\Create.cshtml" />
+    <Content Include="Views\Shared\_SideNavPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107251200207_MinorChangesInQuestionChoices.resx">
       <DependentUpon>202107251200207_MinorChangesInQuestionChoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107251441483_QuestionTableModified.resx">
+      <DependentUpon>202107251441483_QuestionTableModified.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

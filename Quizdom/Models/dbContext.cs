@@ -10,12 +10,10 @@ namespace Quizdom.Models
     {
         public dbContext():base("quizEntities")
         {
-
         }
         public DbSet<Users> Users { get; set; }
         public DbSet<Questions> Questions { get; set; }
 
-        public DbSet<QuestionChoices> QuestionChoices { get; set; }
 
     }
 }

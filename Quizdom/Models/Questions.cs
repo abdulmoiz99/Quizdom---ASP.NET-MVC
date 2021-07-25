@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Quizdom.Models
 {
@@ -10,7 +7,34 @@ namespace Quizdom.Models
     {
         [Key]
         public int Id { get; set; }
+        
+        [MaxLength(50)]
+        public string QuizTilte { get; set; }
+
+        [MaxLength(50)]
         public string Question { get; set; }
+
+        [MaxLength(50)]
+        public string ChoiceA { get; set; }
+
+        [MaxLength(50)]
+        public string ChoiceB { get; set; }
+
+        [MaxLength(50)]
+        public string ChoiceC { get; set; }
+
+        [MaxLength(50)]
+        public string ChoiceD { get; set; }
+
+        [MaxLength(1)]
+        public string CorrectChoice { get; set; }
+
+        public int Points { get; set; }
+
+        public virtual Users User { get; set; }
+
         public bool IsActive { get; set; }
+
+        public DateTime DateCreated { get; set; }
     }
 }

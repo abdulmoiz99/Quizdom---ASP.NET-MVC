@@ -68,3 +68,21 @@
   margin-bottom: 20px;
 }
 
+.correct {
+  background: rgb(78,115,223);
+  color: white;
+}
+
+.incorrect {
+  color: rgb(133,135,150);
+  background: #d3d3d3;
+}
+
+.right {
+  color: rgb(0,193,0);
+}
+
+.wrong {
+  color: red;
+}
+
