@@ -31,8 +31,6 @@ namespace Quizdom.Models
 
         public int Points { get; set; }
 
-        public virtual Users User { get; set; }
-
         public bool IsActive { get; set; }
 
         public DateTime DateCreated { get; set; }

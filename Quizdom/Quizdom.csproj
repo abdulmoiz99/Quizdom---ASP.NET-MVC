@@ -161,6 +161,10 @@
     <Compile Include="Migrations\202107251441483_QuestionTableModified.designer.cs">
       <DependentUpon>202107251441483_QuestionTableModified.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107251511038_IdRemoved.cs" />
+    <Compile Include="Migrations\202107251511038_IdRemoved.designer.cs">
+      <DependentUpon>202107251511038_IdRemoved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\dbContext.cs" />
     <Compile Include="Models\Questions.cs" />
@@ -294,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107251441483_QuestionTableModified.resx">
       <DependentUpon>202107251441483_QuestionTableModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107251511038_IdRemoved.resx">
+      <DependentUpon>202107251511038_IdRemoved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
