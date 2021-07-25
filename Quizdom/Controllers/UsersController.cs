@@ -28,30 +28,36 @@ namespace Quizdom.Controllers
         }
         public ActionResult Login()
         {
+            Main.IsLoggedIn = false;
             return View();
         }
         [HttpPost]
         public ActionResult VerifyLogin(Users users)
         {
-            var db = new dbContext();
-            var SearchData = db.Users.Where(x => x.Email == users.Email && x.Password == users.Password).SingleOrDefault();
-            if (SearchData != null)
+                var db = new dbContext();
+                var SearchData = db.Users.Where(x => x.Email == users.Email && x.Password == users.Password).SingleOrDefault();
+                if (SearchData != null)
+                {
+                    Main.IsLoggedIn = true;
+                    return View("Profile");
+                }
+                else return View("LoginFailed");
+        }
+        public new ActionResult Profile()
+        {
+            if (Main.IsLoggedIn)
             {
-                return View("Login");
+                return View();
             }
             else
             {
-                return View("LoginFailed");
+                return View("Login");
             }
-        }
-        public ActionResult Profile()
-        {
-            return View();
         }
         public ActionResult UpdateProfile(Users users)
         {
             var db = new dbContext();
-            var SearchData = db.Users.Where(x => x.ID == Management.UserID).SingleOrDefault();
+            var SearchData = db.Users.Where(x => x.ID == Main.UserID).SingleOrDefault();
             if (users.Password == SearchData.Password)
             {
                 SearchData.Password = users.Email; // Email in a temp variable to store New Password

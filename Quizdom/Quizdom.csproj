@@ -128,12 +128,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Management.cs" />
     <Compile Include="Controllers\QuizController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Main.cs" />
     <Compile Include="Migrations\202107241847193_TestMigration.cs" />
     <Compile Include="Migrations\202107241847193_TestMigration.designer.cs">
       <DependentUpon>202107241847193_TestMigration.cs</DependentUpon>
