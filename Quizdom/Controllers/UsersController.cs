@@ -44,6 +44,26 @@ namespace Quizdom.Controllers
                 return View("LoginFailed");
             }
         }
+        public ActionResult Profile()
+        {
+            return View();
+        }
+        public ActionResult UpdateProfile(Users users)
+        {
+            var db = new dbContext();
+            var SearchData = db.Users.Where(x => x.ID == Management.UserID).SingleOrDefault();
+            if (users.Password == SearchData.Password)
+            {
+                SearchData.Password = users.Email; // Email in a temp variable to store New Password
+                db.SaveChanges();
+                return View("Profile");
+            }
+            else
+            {
+                return View("ProfileIncorrect");
+            }
+
+        }
         public ActionResult ForgotPassword()
         {
             return View();
