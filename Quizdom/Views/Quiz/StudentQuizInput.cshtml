@@ -1,0 +1,51 @@
+﻿@model Quizdom.Models.Questions
+
+@{
+    ViewBag.Title = "StudentQuizInput";
+    Layout = "~/Views/Shared/_SideNavPanel.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-12 col-xl-10" style="width: 750px;">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body p-0">
+                    <div class="p-5">
+                        <form class="user">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4" style="color: rgb(58, 59, 69);">@Main.QuizTitle</h4>
+                            </div>
+                            @{ int count = 1;}
+                            @foreach (var item in Main.GetQuestions(Main.QuizID))
+                            {
+                                <label class="form-label" style="color: rgb(58,59,69);font-weight: bold;margin-top: 5px;">@count. @item.Question</label>
+                                <div class="form-check" style="margin-bottom: 5px;">
+                                    <input class="form-check-input" type="radio" id="formCheck-1" style="margin-bottom: 5px;">
+                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(58,59,69);margin-bottom: 5px;">@item.ChoiceA</label>
+                                </div>
+
+                                <div class="form-check" style="margin-bottom: 5px;">
+                                    <input class="form-check-input" type="radio" id="formCheck-3" style="margin-bottom: 5px;">
+                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(58,59,69);margin-bottom: 5px;">@item.ChoiceB</label>
+                                </div>
+                                <div class="form-check" style="margin-bottom: 5px;">
+                                    <input class="form-check-input" type="radio" id="formCheck-2" style="margin-bottom: 5px;">
+                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(58,59,69);margin-bottom: 5px;">@item.ChoiceC</label>
+                                </div>
+                                <div class="form-check" style="margin-bottom: 5px;">
+                                    <input class="form-check-input" type="radio" id="formCheck-1">
+                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(58,59,69);">@item.ChoiceD</label>
+                                </div>
+                                <br />
+                                count++;
+                            }
+                            <button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: rgb(78, 115, 223);font-size: 14;margin-top: 25px;">Submit</button>
+                        </form>
+                        <div class="text-center"></div>
+                        <div class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

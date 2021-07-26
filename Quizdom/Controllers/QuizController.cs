@@ -22,6 +22,28 @@ namespace Quizdom.Controllers
         {
             return View();
         }
+        public ActionResult StudentLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult StudentQuiz(Quiz quiz)
+        {
+            var db = new dbContext();
+            // get existing user with with a particular ID
+            var sub = db.Quiz.FirstOrDefault(x => x.Id == quiz.Id);
+            if (sub ==null)
+            {
+               
+                return View("StudentLoginIncorrect");
+            }
+            else
+            {
+                Main.QuizID = sub.Id;
+                Main.QuizTitle = sub.QuizTilte;
+                return View("StudentQuizInput");
+            }
+        }
         [HttpPost]
         public ActionResult CreateQuiz(Quiz quiz)
         {
@@ -34,7 +56,7 @@ namespace Quizdom.Controllers
             db.Quiz.Add(quiz);
             db.SaveChanges();
 
-            ViewBag.QuizTitle = quiz.QuizTilte;
+            Main.QuizTitle = quiz.QuizTilte;
             Main.QuizID = quiz.Id;
 
             return View("Create");

@@ -10,7 +10,7 @@
         <div class="card-header py-3">
             <div class="row">
                 <div class="col-md-6 text-nowrap">
-                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">@ViewBag.QuizTitle</label></div>
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">@Main.QuizTitle</label></div>
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-end dataTables_filter" id="dataTable_filter"><button class="btn btn-primary btn-sm" type="submit">Save &amp; Exit</button></div>
@@ -69,30 +69,30 @@
             <div class="card-body">
                 <div>
                     <div>
-                        <label class="form-label" style="font-weight: bold;">3.</label>
-                        <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Have a multiple-choice question to ask." style="width: 60%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 770;min-width: 50px;" name="Question">
-                        <input type="number" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Points" style="width: 40%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 90px;min-width: 10px;" name="Points">
+                        <label class="form-label" style="font-weight: bold;">@count .</label>
+                        <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Have a multiple-choice question to ask." style="width: 60%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 770;min-width: 50px;" name="Question" required>
+                        <input type="number" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Points" style="width: 40%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 90px;min-width: 10px;" name="Points" required>
                     </div>
                     <div>
                         <div style="margin-top: 5px;">
                             <label class="form-label" style="font-weight: bold;">A</label>
-                            <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="A">
-                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer A" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceA">
+                            <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="A" checked>
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer A" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceA" required>
                         </div>
                         <div style="margin-top: 5px;">
                             <label class="form-label" style="font-weight: bold;">B</label>
                             <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="B">
-                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer B" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceB">
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer B" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceB"required>
                         </div>
                         <div style="margin-top: 5px;">
                             <label class="form-label" style="font-weight: bold;">C</label>
                             <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="C">
-                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer C" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceC">
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer C" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceC" required>
                         </div>
                         <div style="margin-top: 5px;">
                             <label class="form-label" style="font-weight: bold;">D</label>
                             <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="D">
-                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer D" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceD">
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer D" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceD" required>
                         </div>
                     </div>
                     <div class="row">

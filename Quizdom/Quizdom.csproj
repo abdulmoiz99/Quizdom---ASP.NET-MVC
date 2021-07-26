@@ -286,6 +286,9 @@
     <Content Include="Views\Users\ProfileIncorrect.cshtml" />
     <Content Include="Views\Quiz\AddQuizName.cshtml" />
     <Content Include="Views\Quiz\Quizes.cshtml" />
+    <Content Include="Views\Quiz\StudentLogin.cshtml" />
+    <Content Include="Views\Quiz\StudentLoginIncorrect.cshtml" />
+    <Content Include="Views\Quiz\StudentQuizInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

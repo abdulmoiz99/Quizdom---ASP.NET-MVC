@@ -14,6 +14,8 @@ namespace Quizdom
 
         public static int QuizID { get; set; }
 
+        public static string QuizTitle { get; set; }
+
 
         public static bool IsLoggedIn = false;
 
