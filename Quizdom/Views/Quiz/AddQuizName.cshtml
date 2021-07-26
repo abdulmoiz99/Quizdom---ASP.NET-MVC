@@ -1,0 +1,22 @@
+﻿@model Quizdom.Models.Quiz
+
+@{
+    ViewBag.Title = "AddQuizName";
+    Layout = "~/Views/Shared/_SideNavPanel.cshtml";
+}
+<div class="container-fluid">
+    <form action="CreateQuiz" method="post">
+        <div class="p-5">
+            <div class="text-center">
+                <h4 class="text-dark mb-4">Enter Quiz Title</h4>
+            </div>
+            <div class="mb-3"><input class="form-control form-control-user" placeholder="Enter Quiz Name..." name="QuizTilte" required style="font-size: 14px;"></div>
+            <div class="mb-3">
+                <div class="custom-control custom-checkbox small"></div>
+            </div>
+            <button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: rgb(78, 115, 223);font-size: 14;" href=@Url.Action("AddQuizName", "Quiz")>Add Quiz</button>
+            <div class="text-center"></div>
+            <div class="text-center"></div>
+        </div>
+    </form>
+</div>

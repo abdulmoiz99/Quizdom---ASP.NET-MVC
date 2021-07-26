@@ -8,6 +8,7 @@ namespace Quizdom.Models
         [Key]
         public int Id { get; set; }
 
+        public virtual Quiz Quiz { get; set; }
 
         [MaxLength(50)]
         public string Question { get; set; }
@@ -30,6 +31,6 @@ namespace Quizdom.Models
         public int Points { get; set; }
 
         public bool IsActive { get; set; }
-        
+
     }
 }

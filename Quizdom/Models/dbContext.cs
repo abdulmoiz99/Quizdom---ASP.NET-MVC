@@ -12,6 +12,7 @@ namespace Quizdom.Models
         {
         }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Quiz> Quiz { get; set; }
         public DbSet<Questions> Questions { get; set; }
 
 

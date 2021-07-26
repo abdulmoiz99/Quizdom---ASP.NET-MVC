@@ -19,5 +19,7 @@ namespace Quizdom.Models
         public virtual Users User { get; set; }
 
         public DateTime DateCreated { get; set; }
+
+        public string Link { get; set; }
     }
 }

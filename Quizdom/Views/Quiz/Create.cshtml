@@ -4,105 +4,104 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_SideNavPanel.cshtml";
 }
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Add Quiz</h3>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">@ViewBag.QuizTitle</label></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><button class="btn btn-primary btn-sm" type="submit">Save &amp; Exit</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @{int count = 1;}
+            @foreach (var item in Main.GetQuestions(Main.QuizID))
+            {
+                string A = "incorrect", B = "incorrect", C = "incorrect", D = "incorrect";
 
-<div class="d-flex flex-column" id="content-wrapper">
-    <div id="content">
-        <form action="AddQuestion" method="post">
-            <div class="container-fluid">
-                <h3 class="text-dark mb-4">Add Quiz</h3>
-                <div class="card shadow">
-                    <div class="card-header py-3">
+                if (item.CorrectChoice == "A")
+                { A = "correct"; }
+                else if (item.CorrectChoice == "B")
+                { B = "correct"; }
+                else if (item.CorrectChoice == "C")
+                { C = "correct"; }
+                else if (item.CorrectChoice == "D")
+                { D = "correct"; }
+
+
+                <div style="margin-bottom: 30px;">
+                    <div>
                         <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Quiz Title" style="width: 285px;" name="QuizTilte" required></label></div>
-                            </div>
+                            <div class="col-md-6 text-nowrap"><label class="col-form-label" style="font-weight: bold;">@count. @item.Question</label></div>
                             <div class="col-md-6">
-                                <div class="text-md-end dataTables_filter" id="dataTable_filter"><button class="btn btn-primary btn-sm" type="submit">Save &amp; Exit</button></div>
+                                <div class="text-md-end dataTables_filter" id="dataTable_filter-2"><button class="btn btn-primary" type="button" style="margin-left: 10px;height: 31px;padding-top: 3px;"><i class="fa fa-trash"></i></button></div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div style="margin-bottom: 30px;">
-                            <div>
-                                <div class="row">
-                                    <div class="col-md-6 text-nowrap"><label class="col-form-label" style="font-weight: bold;">1. What is the capital of Pakistan?</label></div>
-                                    <div class="col-md-6">
-                                        <div class="text-md-end dataTables_filter" id="dataTable_filter-2"><button class="btn btn-primary" type="button" style="margin-left: 10px;height: 31px;padding-top: 3px;"><i class="fa fa-trash"></i></button></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div style="margin-top: 5px;"><label class="form-label correct" style="font-weight: bold;border-radius: 20px;">&nbsp;A&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">Islamabad</label></div>
-                                <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label incorrect" style="font-weight: bold;border-radius: 20px;">&nbsp;B&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">Karachi</label></div>
-                                <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label incorrect" style="font-weight: bold;border-radius: 20px;">&nbsp;C&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">Lahore</label></div>
-                                <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label incorrect" style="font-weight: bold;border-radius: 20px;">&nbsp;D&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">Rawalpindi</label></div>
-                            </div>
-                        </div>
-                        <div style="margin-top: 0px;">
-                            <div>
-                                <div class="row">
-                                    <div class="col-md-6 text-nowrap"><label class="col-form-label" style="font-weight: bold;">2. Who is the founder of Pakistan?</label></div>
-                                    <div class="col-md-6">
-                                        <div class="text-md-end dataTables_filter" id="dataTable_filter-3"><button class="btn btn-primary" type="button" style="margin-left: 10px;height: 31px;padding-top: 3px;"><i class="fa fa-trash"></i></button></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div style="margin-top: 5px;"><label class="form-label incorrect" style="font-weight: bold;border-radius: 20px;">&nbsp;A&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">Sir Syed Ahmed Khan</label></div>
-                                <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label correct" style="font-weight: bold;border-radius: 20px;">&nbsp;B&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">Quaid-e-Azam</label></div>
-                                <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label incorrect" style="font-weight: bold;border-radius: 20px;">&nbsp;C&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">Liaquat Ali Khan</label></div>
-                                <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label incorrect" style="font-weight: bold;border-radius: 20px;">&nbsp;D&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">Allama Iqbal</label></div>
-                            </div>
-                        </div>
+                    <div>
+                        <div style="margin-top: 5px;"><label class="form-label @A" style="font-weight: bold;border-radius: 20px;">&nbsp;A&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceA</label></div>
+                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @B" style="font-weight: bold;border-radius: 20px;">&nbsp;B&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceB</label></div>
+                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @C" style="font-weight: bold;border-radius: 20px;">&nbsp;C&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceC</label></div>
+                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @D" style="font-weight: bold;border-radius: 20px;">&nbsp;D&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceD</label></div>
                     </div>
                 </div>
-                <div class="card shadow" style="margin-top: 15px;">
-                    <div class="card-header py-3">
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Add Question</label></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-end dataTables_filter" id="dataTable_filter"></div>
-                            </div>
+                count++;
+            }
+
+        </div>
+    </div>
+    <div class="card shadow" style="margin-top: 15px;">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Add Question</label></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"></div>
+                </div>
+            </div>
+        </div>
+        <form action="AddQuestion" method="post">
+            <div class="card-body">
+                <div>
+                    <div>
+                        <label class="form-label" style="font-weight: bold;">3.</label>
+                        <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Have a multiple-choice question to ask." style="width: 60%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 770;min-width: 50px;" name="Question">
+                        <input type="number" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Points" style="width: 40%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 90px;min-width: 10px;" name="Points">
+                    </div>
+                    <div>
+                        <div style="margin-top: 5px;">
+                            <label class="form-label" style="font-weight: bold;">A</label>
+                            <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="A">
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer A" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceA">
+                        </div>
+                        <div style="margin-top: 5px;">
+                            <label class="form-label" style="font-weight: bold;">B</label>
+                            <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="B">
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer B" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceB">
+                        </div>
+                        <div style="margin-top: 5px;">
+                            <label class="form-label" style="font-weight: bold;">C</label>
+                            <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="C">
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer C" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceC">
+                        </div>
+                        <div style="margin-top: 5px;">
+                            <label class="form-label" style="font-weight: bold;">D</label>
+                            <input type="radio" style="margin-left: 10px;" name="CorrectChoice" value="D">
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer D" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceD">
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div>
-                            <div>
-                                <label class="form-label" style="font-weight: bold;">3.</label>
-                                <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Have a multiple-choice question to ask." style="width: 60%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 770;min-width: 50px;" name="Question">
-                                <input type="number" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Points" style="width: 40%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 90px;min-width: 10px;" name="Points">
-                            </div>
-                            <div>
-                                <div style="margin-top: 5px;">
-                                    <label class="form-label" style="font-weight: bold;">A</label>
-                                    <input type="radio" style="margin-left: 10px;">
-                                    <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer A" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceA" required>
-                                </div>
-                                <div style="margin-top: 5px;">
-                                    <label class="form-label" style="font-weight: bold;">B</label>
-                                    <input type="radio" style="margin-left: 10px;">
-                                    <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer B" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceB" required>
-                                </div>
-                                <div style="margin-top: 5px;">
-                                    <label class="form-label" style="font-weight: bold;">C</label>
-                                    <input type="radio" style="margin-left: 10px;">
-                                    <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer C" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceC" required>
-                                </div>
-                                <div style="margin-top: 5px;">
-                                    <label class="form-label" style="font-weight: bold;">D</label>
-                                    <input type="radio" style="margin-left: 10px;">
-                                    <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Answer D" style="width: 300px;display: inline;margin-left: 10px;color: rgb(133, 135, 150);" name="ChoiceD" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length-1" class="dataTables_length" aria-controls="dataTable"></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter-1"><button class="btn btn-primary btn-sm" type="submit" style="margin-top: 10px;">Next Question</button></div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6 text-nowrap">
+                            <div id="dataTable_length-1" class="dataTables_length" aria-controls="dataTable"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-end dataTables_filter" id="dataTable_filter-1">
+                                <button class="btn btn-primary btn-sm" type="submit" style="margin-top: 10px;">Next Question</button>
                             </div>
                         </div>
                     </div>
@@ -111,4 +110,3 @@
         </form>
     </div>
 </div>
-<a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
