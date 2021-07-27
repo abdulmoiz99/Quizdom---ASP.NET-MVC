@@ -1,0 +1,57 @@
+﻿@model Quizdom.Models.Quiz
+
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_SideNavPanel.cshtml";
+}
+
+<h2>Results</h2>
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Results</h3>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search Quizzes" style="width: 285px;"></label></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Total Score</th>
+                            <th>Students Attempted</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Main.GetResults(1))
+                        {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.DateCreated.ToShortDateString()</td>
+                            <td>@item.TotalScore</td>
+                            <td>@item.StudentsAttempted</td>
+                            <td><a href="#">See Details</a></td>
+                            <td></td>
+                            <td>
+                                @Html.ActionLink("Details", "Result", new { Name = item.Id })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

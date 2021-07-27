@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "StudentScore";
-    Layout = "~/Views/Shared/_SideNavPanel.cshtml";
+    Layout = "~/Views/Shared/_Student.cshtml";
 }
 <div class="container">
     <div class="row justify-content-center">
@@ -14,7 +14,8 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4" style="color: rgb(58, 59, 69);">Quiz Completed! Your score is:</h4>
                                 <h4 class="text-dark mb-4" style="color: rgb(58, 59, 69);font-size: 40px;font-weight: bold;">@ViewBag.Score / @ViewBag.Total</h4>
-                            </div><button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: rgb(78, 115, 223);font-size: 14;margin-top: 25px;">Got It!</button>
+                            </div>
+                            <button class="btn btn-primary d-block btn-user w-100" type="button" style="background: rgb(78, 115, 223);font-size: 14;margin-top: 25px;" onclick="@("window.location.href='" + @Url.Action("StudentLogin", "Quiz") + "'");">Got It!</button>
                         </form>
                         <div class="text-center"></div>
                         <div class="text-center"></div>
