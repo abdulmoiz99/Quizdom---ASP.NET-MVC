@@ -186,10 +186,15 @@
     <Compile Include="Migrations\202107260934194_QuestionTableUpdated1.designer.cs">
       <DependentUpon>202107260934194_QuestionTableUpdated1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107271148073_StudentTableAdded.cs" />
+    <Compile Include="Migrations\202107271148073_StudentTableAdded.designer.cs">
+      <DependentUpon>202107271148073_StudentTableAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\dbContext.cs" />
     <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Quiz.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -290,6 +295,7 @@
     <Content Include="Views\Quiz\StudentLogin.cshtml" />
     <Content Include="Views\Quiz\StudentLoginIncorrect.cshtml" />
     <Content Include="Views\Quiz\StudentQuizInput.cshtml" />
+    <Content Include="Views\Quiz\StudentScore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -346,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107260934194_QuestionTableUpdated1.resx">
       <DependentUpon>202107260934194_QuestionTableUpdated1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107271148073_StudentTableAdded.resx">
+      <DependentUpon>202107271148073_StudentTableAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

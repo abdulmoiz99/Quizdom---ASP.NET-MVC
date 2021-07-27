@@ -26,15 +26,36 @@ namespace Quizdom.Controllers
         {
             return View();
         }
+
+        public ActionResult StudentScore(Student student)
+        {
+            var db = new dbContext();
+            // get existing user with with a particular ID
+            var sub = db.Quiz.FirstOrDefault(x => x.Id == Main.QuizID);
+            student.Quiz = sub;
+            student.Date = DateTime.Now;
+            db.Students.Add(student);
+            db.SaveChanges();
+
+            ViewBag.Score = student.Score;
+
+            var total =  db.Questions.Select(t => t.Points).Sum();
+
+            ViewBag.Total = total;
+
+
+            return View("StudentScore");
+        }
+
         [HttpPost]
         public ActionResult StudentQuiz(Quiz quiz)
         {
             var db = new dbContext();
             // get existing user with with a particular ID
             var sub = db.Quiz.FirstOrDefault(x => x.Id == quiz.Id);
-            if (sub ==null)
+            if (sub == null)
             {
-               
+
                 return View("StudentLoginIncorrect");
             }
             else

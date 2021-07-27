@@ -1,0 +1,26 @@
+﻿        @model Quizdom.Models.Student
+
+@{
+    ViewBag.Title = "StudentScore";
+    Layout = "~/Views/Shared/_SideNavPanel.cshtml";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-12 col-xl-10" style="width: 500px;">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body p-0">
+                    <div class="p-5">
+                        <form class="user">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4" style="color: rgb(58, 59, 69);">Quiz Completed! Your score is:</h4>
+                                <h4 class="text-dark mb-4" style="color: rgb(58, 59, 69);font-size: 40px;font-weight: bold;">@ViewBag.Score / @ViewBag.Total</h4>
+                            </div><button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: rgb(78, 115, 223);font-size: 14;margin-top: 25px;">Got It!</button>
+                        </form>
+                        <div class="text-center"></div>
+                        <div class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
