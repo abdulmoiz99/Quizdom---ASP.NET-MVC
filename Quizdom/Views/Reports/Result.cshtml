@@ -1,0 +1,116 @@
+﻿@model Quizdom.Models.Quiz
+
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_SideNavPanel.cshtml";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">World Fact Quiz</h3>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length-1" class="dataTables_length" aria-controls="dataTable"><label class="form-label"></label></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter-1"><button class="btn btn-primary btn-sm" type="button" onclick="@("window.location.href='" + @Url.Action("Results", "Reports") + "'")">Finish</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @{int count = 1;}
+            @foreach (var item in Main.GetQuestions(Convert.ToInt32(Request.QueryString["Name"])))
+            {
+                string A = "incorrect", B = "incorrect", C = "incorrect", D = "incorrect";
+
+                if (item.CorrectChoice == "A")
+                { A = "correct"; }
+                else if (item.CorrectChoice == "B")
+                { B = "correct"; }
+                else if (item.CorrectChoice == "C")
+                { C = "correct"; }
+                else if (item.CorrectChoice == "D")
+                { D = "correct"; }
+
+                <div style="margin-bottom: 30px;">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-6 text-nowrap"><label class="col-form-label" style="font-weight: bold;">@count. @item.Question</label></div>
+                            <div class="col-md-6">
+                                <div class="text-md-end dataTables_filter" id="dataTable_filter-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="margin-top: 5px;"><label class="form-label @A" style="font-weight: bold;border-radius: 20px;">&nbsp;A&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceA</label></div>
+                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @B" style="font-weight: bold;border-radius: 20px;">&nbsp;B&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceB</label></div>
+                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @C" style="font-weight: bold;border-radius: 20px;">&nbsp;C&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceC</label></div>
+                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @D" style="font-weight: bold;border-radius: 20px;">&nbsp;D&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceD</label></div>
+                    </div>
+                </div>
+                count++;
+            }
+            </div>
+    </div>
+    <div class="card shadow" style="margin-top: 20px;">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search Name" id="txt_Search" onkeyup="SearchQuizes()" style="width: 285px;"></label></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Score %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Main.GetStudentResults(Convert.ToInt32(Request.QueryString["Name"])))
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Score</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function SearchQuizes() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("txt_Search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("dataTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

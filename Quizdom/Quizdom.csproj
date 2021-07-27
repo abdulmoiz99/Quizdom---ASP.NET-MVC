@@ -299,6 +299,7 @@
     <Content Include="Views\Quiz\StudentScore.cshtml" />
     <Content Include="Views\Shared\_Student.cshtml" />
     <Content Include="Views\Reports\Results.cshtml" />
+    <Content Include="Views\Reports\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

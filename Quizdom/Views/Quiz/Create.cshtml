@@ -13,7 +13,7 @@
                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">@Main.QuizTitle</label></div>
                 </div>
                 <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><button class="btn btn-primary btn-sm" type="submit">Save &amp; Exit</button></div>
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><button class="btn btn-primary btn-sm" type="button" onclick="@("window.location.href='" + @Url.Action("Quizes", "Quiz") + "'")";>Save &amp; Exit</button></div>
                 </div>
             </div>
         </div>

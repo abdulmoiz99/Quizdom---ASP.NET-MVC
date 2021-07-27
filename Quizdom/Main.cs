@@ -57,6 +57,13 @@ namespace Quizdom
             (quiz, questions) => new { Id = quiz.Id, Name = quiz.QuizTilte, DateCreated = quiz.DateCreated, TotalScore = questions.Where(t => t.Quiz.Id == quiz.Id).Sum(t => t.Points) }).GroupJoin(db.Students, x => x.Id, y => y.Quiz.Id, (quizQuestions, students) => new Result(){ Id = quizQuestions.Id, Title = quizQuestions.Name, DateCreated = quizQuestions.DateCreated, TotalScore = quizQuestions.TotalScore, StudentsAttempted = students.Where(x => x.Quiz.Id == quizQuestions.Id).Count() }).ToList();
             return query;
         }
+
+        public static List<StudentResult> GetStudentResults(int quizID)
+        {
+            var db = new dbContext();
+            double total = db.Questions.Where(q => q.Quiz.Id == quizID).Sum(x => x.Points);
+            return db.Students.Where(s => s.Quiz.Id == quizID).Select(x => new StudentResult() { Id = x.Id, Name = x.Name, Score = x.Score/total * 100 }).ToList();
+        }
     }
 
     public class Result 
@@ -66,5 +73,12 @@ namespace Quizdom
         public DateTime DateCreated { get; set; }
         public int TotalScore { get; set; }
         public int StudentsAttempted { get; set; }
+    }
+
+    public class StudentResult
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Score { get; set; }
     }
 }
