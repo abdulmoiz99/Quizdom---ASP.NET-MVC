@@ -225,6 +225,7 @@
     <Content Include="assets\img\dogs\pexels-rodnae-productions-7092339.jpg" />
     <Content Include="assets\js\bs-init.js" />
     <Content Include="assets\js\chart.min.js" />
+    <Content Include="assets\js\QuizCalculate.js" />
     <Content Include="assets\js\theme.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

@@ -19,6 +19,8 @@ namespace Quizdom
 
         public static bool IsLoggedIn = false;
 
+        public static int total = 0;
+
         public static string GetUserName()
         {
             Username = "Abdul Moiz";
