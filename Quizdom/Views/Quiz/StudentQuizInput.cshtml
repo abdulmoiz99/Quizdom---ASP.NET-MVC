@@ -18,22 +18,34 @@
                             @{ int count = 1;}
                             @foreach (var item in Main.GetQuestions(Main.QuizID))
                             {
-                                <label class="form-label" style="color: rgb(58,59,69);font-weight: bold;margin-top: 5px;">@count. @item.Question</label>
+                                string A = "incorrect", B = "incorrect", C = "incorrect", D = "incorrect";
+
+                                if (item.CorrectChoice == "A")
+                                { A = "correct"; }
+                                else if (item.CorrectChoice == "B")
+                                { B = "correct"; }
+                                else if (item.CorrectChoice == "C")
+                                { C = "correct"; }
+                                else if (item.CorrectChoice == "D")
+                                { D = "correct"; }
+
+
+                                <label class="form-label @item.Points" style="color: rgb(58,59,69);font-weight: bold;margin-top: 5px;">@count. @item.Question</label>
                                 <div class="form-check" style="margin-bottom: 5px;">
-                                    <input class="form-check-input" type="radio" id="formCheck-1" style="margin-bottom: 5px;">
+                                    <input class="form-check-input @A" type="radio" id="formCheck-1" style="margin-bottom: 5px;">
                                     <label class="form-check-label" for="formCheck-1" style="color: rgb(58,59,69);margin-bottom: 5px;">@item.ChoiceA</label>
                                 </div>
 
                                 <div class="form-check" style="margin-bottom: 5px;">
-                                    <input class="form-check-input" type="radio" id="formCheck-3" style="margin-bottom: 5px;">
+                                    <input class="form-check-input @B" type="radio" id="formCheck-3" style="margin-bottom: 5px;">
                                     <label class="form-check-label" for="formCheck-1" style="color: rgb(58,59,69);margin-bottom: 5px;">@item.ChoiceB</label>
                                 </div>
                                 <div class="form-check" style="margin-bottom: 5px;">
-                                    <input class="form-check-input" type="radio" id="formCheck-2" style="margin-bottom: 5px;">
+                                    <input class="form-check-input @C" type="radio" id="formCheck-2" style="margin-bottom: 5px;">
                                     <label class="form-check-label" for="formCheck-1" style="color: rgb(58,59,69);margin-bottom: 5px;">@item.ChoiceC</label>
                                 </div>
                                 <div class="form-check" style="margin-bottom: 5px;">
-                                    <input class="form-check-input" type="radio" id="formCheck-1">
+                                    <input class="form-check-input @D" type="radio" id="formCheck-1">
                                     <label class="form-check-label" for="formCheck-1" style="color: rgb(58,59,69);">@item.ChoiceD</label>
                                 </div>
                                 <br />
