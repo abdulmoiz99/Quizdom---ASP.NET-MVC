@@ -39,10 +39,9 @@ namespace Quizdom.Controllers
 
             ViewBag.Score = student.Score;
 
-            var total =  db.Questions.Select(t => t.Points).Sum();
+            var total = db.Questions.Where(t => t.Quiz.Id == Main.QuizID).Sum(t => t.Points);
 
             ViewBag.Total = total;
-
 
             return View("StudentScore");
         }
