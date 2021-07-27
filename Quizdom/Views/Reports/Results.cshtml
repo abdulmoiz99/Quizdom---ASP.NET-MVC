@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_SideNavPanel.cshtml";
 }
 
-<h2>Results</h2>
 <div class="container-fluid">
     <h3 class="text-dark mb-4">Results</h3>
     <div class="card shadow">
@@ -39,10 +38,8 @@
                             <td>@item.DateCreated.ToShortDateString()</td>
                             <td>@item.TotalScore</td>
                             <td>@item.StudentsAttempted</td>
-                            <td><a href="#">See Details</a></td>
-                            <td></td>
                             <td>
-                                @Html.ActionLink("Details", "Result", new { Name = item.Id })
+                                @Html.ActionLink("See Details", "Result", new { Name = item.Id })
                             </td>
                         </tr>
                         }

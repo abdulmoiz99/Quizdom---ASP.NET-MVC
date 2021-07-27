@@ -53,8 +53,9 @@ namespace Quizdom
         public static List<Result> GetResults(int UserID) 
         {
             var db = new dbContext();
-            return db.Quiz.Where(q => q.User.ID == UserID).GroupJoin(db.Questions, x => x.Id, y => y.Quiz.Id,
-            (quiz, questions) => new { Id = quiz.Id, Name = quiz.QuizTilte, DateCreated = quiz.DateCreated, TotalScore = questions.Where(t => t.Quiz.Id == quiz.Id).Sum(t => t.Points) }).GroupJoin(db.Students, x => x.Id, y => y.Quiz.Id, (quizQuestions, students) => new Result(){ Id = quizQuestions.Id, Title = quizQuestions.Name, DateCreated = quizQuestions.DateCreated, TotalScore = quizQuestions.TotalScore, StudentsAttempted = students.Where(x => x.Quiz.Id == quizQuestions.Id).Count() }).ToList();        
+            var query = db.Quiz.Where(q => q.User.ID == UserID).GroupJoin(db.Questions, x => x.Id, y => y.Quiz.Id,
+            (quiz, questions) => new { Id = quiz.Id, Name = quiz.QuizTilte, DateCreated = quiz.DateCreated, TotalScore = questions.Where(t => t.Quiz.Id == quiz.Id).Sum(t => t.Points) }).GroupJoin(db.Students, x => x.Id, y => y.Quiz.Id, (quizQuestions, students) => new Result(){ Id = quizQuestions.Id, Title = quizQuestions.Name, DateCreated = quizQuestions.DateCreated, TotalScore = quizQuestions.TotalScore, StudentsAttempted = students.Where(x => x.Quiz.Id == quizQuestions.Id).Count() }).ToList();
+            return query;
         }
     }
 
