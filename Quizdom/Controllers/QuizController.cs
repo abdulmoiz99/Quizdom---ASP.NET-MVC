@@ -123,5 +123,10 @@ namespace Quizdom.Controllers
 
             return View("Create");
         }
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
     }
 }

@@ -13,45 +13,42 @@
                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">@Main.QuizTitle</label></div>
                 </div>
                 <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><button class="btn btn-primary btn-sm" type="button" onclick="@("window.location.href='" + @Url.Action("Quizes", "Quiz") + "'")";>Save &amp; Exit</button></div>
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><button class="btn btn-primary btn-sm" type="button" onclick="@("window.location.href='" + @Url.Action("Quizes", "Quiz") + "'")" ;>Save &amp; Exit</button></div>
                 </div>
             </div>
         </div>
-        <div class="card-body">
-            @{int count = 1;}
-            @foreach (var item in Main.GetQuestions(Main.QuizID))
-            {
-                string A = "incorrect", B = "incorrect", C = "incorrect", D = "incorrect";
+            <div class="card-body">
+                @{int count = 1;}
+                @foreach (var item in Main.GetQuestions(Main.QuizID))
+                {
+                    string A = "incorrect", B = "incorrect", C = "incorrect", D = "incorrect";
 
-                if (item.CorrectChoice == "A")
-                { A = "correct"; }
-                else if (item.CorrectChoice == "B")
-                { B = "correct"; }
-                else if (item.CorrectChoice == "C")
-                { C = "correct"; }
-                else if (item.CorrectChoice == "D")
-                { D = "correct"; }
+                    if (item.CorrectChoice == "A")
+                    { A = "correct"; }
+                    else if (item.CorrectChoice == "B")
+                    { B = "correct"; }
+                    else if (item.CorrectChoice == "C")
+                    { C = "correct"; }
+                    else if (item.CorrectChoice == "D")
+                    { D = "correct"; }
 
-                <div style="margin-bottom: 30px;">
-                    <div>
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap"><label class="col-form-label" style="font-weight: bold;">@count. @item.Question</label></div>
-                            <div class="col-md-6">
-                                <div class="text-md-end dataTables_filter" id="dataTable_filter-2"><button class="btn btn-primary" type="button" style="margin-left: 10px;height: 31px;padding-top: 3px;"><i class="fa fa-trash"></i></button></div>
+                    <div style="margin-bottom: 30px;">
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap"><label class="col-form-label" style="font-weight: bold;">@count. @item.Question</label></div>
                             </div>
                         </div>
+                        <div>
+                            <div style="margin-top: 5px;"><label class="form-label @A" style="font-weight: bold;border-radius: 20px;">&nbsp;A&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceA</label></div>
+                            <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @B" style="font-weight: bold;border-radius: 20px;">&nbsp;B&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceB</label></div>
+                            <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @C" style="font-weight: bold;border-radius: 20px;">&nbsp;C&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceC</label></div>
+                            <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @D" style="font-weight: bold;border-radius: 20px;">&nbsp;D&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceD</label></div>
+                        </div>
                     </div>
-                    <div>
-                        <div style="margin-top: 5px;"><label class="form-label @A" style="font-weight: bold;border-radius: 20px;">&nbsp;A&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceA</label></div>
-                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @B" style="font-weight: bold;border-radius: 20px;">&nbsp;B&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceB</label></div>
-                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @C" style="font-weight: bold;border-radius: 20px;">&nbsp;C&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceC</label></div>
-                        <div style="margin-top: 5px;padding-left: 0px;"><label class="form-label @D" style="font-weight: bold;border-radius: 20px;">&nbsp;D&nbsp;</label><label class="form-label" style="font-weight: bold;padding-left: 0px;margin-left: 10px;">@item.ChoiceD</label></div>
-                    </div>
-                </div>
-                count++;
-            }
+                    count++;
+                }
 
-        </div>
+            </div>
     </div>
     <div class="card shadow" style="margin-top: 15px;">
         <div class="card-header py-3">
@@ -68,7 +65,7 @@
             <div class="card-body">
                 <div>
                     <div>
-                        <label class="form-label" style="font-weight: bold;">@count .</label>
+                        <label class="form-label" style="font-weight: bold;">@count.</label>
                         <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Have a multiple-choice question to ask." style="width: 60%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 770;min-width: 50px;" name="Question" required>
                         <input type="number" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Points" style="width: 40%;display: inline;margin-left: 10px;color: rgb(133, 135, 150);max-width: 90px;min-width: 10px;" name="Points" required>
                     </div>
