@@ -49,11 +49,38 @@ namespace Quizdom.Controllers
             return View("StudentScore");
         }
 
+        public ActionResult ToggleStatus(Quiz _quiz)
+        {
+            var db = new dbContext();
+            var quiz = db.Quiz.FirstOrDefault(x => x.Id == _quiz.Id);
+            quiz.IsActive = !(quiz.IsActive);
+            db.SaveChanges();
+            return View("Quizes");
+        }
+
+        public ActionResult DeleteQuiz(Quiz _quiz)
+        {
+            var db = new dbContext();
+
+            //Removing associated questions
+            List<Questions> questionsToRemove = db.Questions.Where(x => x.Quiz.Id == _quiz.Id).ToList();
+            foreach (var question in questionsToRemove) db.Questions.Remove(question);
+
+            //Removing associated students
+            List<Student> studentsToRemove = db.Students.Where(x => x.Quiz.Id == _quiz.Id).ToList();
+            foreach (var student in studentsToRemove) db.Students.Remove(student);
+
+            var quiz = db.Quiz.FirstOrDefault(x => x.Id == _quiz.Id);
+            if (quiz != null) db.Quiz.Remove(quiz);
+            db.SaveChanges();
+            return View("Quizes");
+        }
+
         [HttpPost]
         public ActionResult StudentQuiz(Quiz quiz)
         {
             var db = new dbContext();
-            if (db.Quiz.Any(x => x.Link == quiz.Link))
+            if (db.Quiz.Any(x => x.Link == quiz.Link && x.IsActive == true))
             {
                 Main.QuizID = db.Quiz.Where(x => x.Link == quiz.Link).Select(x => x.Id).FirstOrDefault();
                 Main.QuizTitle = db.Quiz.Where(x => x.Link == quiz.Link).Select(x => x.QuizTilte).FirstOrDefault();
