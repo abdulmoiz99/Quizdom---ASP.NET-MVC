@@ -25,7 +25,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Date</th>
-                            <th>Copy</th>
                             <th>Share</th>
                             <th>Delete</th>
                             <th>Status</th>
@@ -39,8 +38,7 @@
                             <tr>
                                 <td>@quiz.QuizTilte</td>
                                 <td>@quiz.DateCreated.ToShortDateString()</td>
-                                <td><button class="btn btn-primary" type="button"><i class="fas fa-copy"></i></button></td>
-                                <td><button class="btn btn-primary" type="button"><i class="fas fa-share-alt"></i></button></td>
+                                <td><button class="btn btn-primary" type="button" onclick="copyToClipboard('@quiz.Link')"><i class="fas fa-share-alt"></i></button></td>
                                 <td><button class="btn btn-primary" type="button"><i class="fas fa-trash"></i></button></td>
                                 <td>
                                     <button class="btn btn-primary" type="button">
@@ -85,4 +83,11 @@
             }
         }
     }
+
+    function copyToClipboard(code) {
+        var msg = code + " - Share this code with students to joiz quiz.";
+        alert(msg);
+        //use msg now
+    }
+
 </script>

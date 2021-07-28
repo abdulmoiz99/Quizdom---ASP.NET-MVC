@@ -20,6 +20,7 @@ namespace Quizdom
         public static bool IsLoggedIn = false;
 
         public static int total = 0;
+        private static Random random = new Random();
 
         public static string GetUserName()
         {
@@ -63,6 +64,22 @@ namespace Quizdom
             var db = new dbContext();
             double total = db.Questions.Where(q => q.Quiz.Id == quizID).Sum(x => x.Points);
             return db.Students.Where(s => s.Quiz.Id == quizID).Select(x => new StudentResult() { Id = x.Id, Name = x.Name, Score = x.Score/total * 100 }).ToList();
+        }
+
+        
+        public static string RandomString(int length)
+        {
+            var db = new dbContext();
+            string randomString = String.Empty;
+            bool found = true;
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            while (found) 
+            {
+                randomString = new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+                if (db.Quiz.Any(x => x.Link == randomString)) found = true;
+                else found = false;
+            }
+            return randomString;       
         }
     }
 

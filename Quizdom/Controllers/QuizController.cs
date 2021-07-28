@@ -53,18 +53,16 @@ namespace Quizdom.Controllers
         public ActionResult StudentQuiz(Quiz quiz)
         {
             var db = new dbContext();
-            // get existing user with with a particular ID
-            var sub = db.Quiz.FirstOrDefault(x => x.Id == quiz.Id);
-            if (sub == null)
+            if (db.Quiz.Any(x => x.Link == quiz.Link))
             {
-
-                return View("StudentLoginIncorrect");
+                Main.QuizID = db.Quiz.Where(x => x.Link == quiz.Link).Select(x => x.Id).FirstOrDefault();
+                Main.QuizTitle = db.Quiz.Where(x => x.Link == quiz.Link).Select(x => x.QuizTilte).FirstOrDefault();
+                return View("StudentQuizInput");
+                
             }
             else
             {
-                Main.QuizID = sub.Id;
-                Main.QuizTitle = sub.QuizTilte;
-                return View("StudentQuizInput");
+                return View("StudentLoginIncorrect");
             }
         }
         [HttpPost]
@@ -76,6 +74,7 @@ namespace Quizdom.Controllers
             quiz.User = sub;
             quiz.IsActive = true;
             quiz.DateCreated = DateTime.Now;
+            quiz.Link = Main.RandomString(6);
             db.Quiz.Add(quiz);
             db.SaveChanges();
 
