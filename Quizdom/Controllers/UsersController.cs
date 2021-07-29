@@ -26,6 +26,7 @@ namespace Quizdom.Controllers
             db.Users.Add(userdetails);
             db.SaveChanges();
             return View("Login");
+
         }
         public ActionResult Login()
         {
@@ -42,7 +43,7 @@ namespace Quizdom.Controllers
                 Main.IsLoggedIn = true;
                 Main.UserID = SearchData.ID;
                 Main.Username = SearchData.FirstName + " " + SearchData.LastName;
-                return View("Profile");
+                return View("~/Views/Reports/Dashboard.cshtml");
             }
             else return View("LoginFailed");
 
@@ -60,17 +61,24 @@ namespace Quizdom.Controllers
         }
         public ActionResult UpdateProfile(Users users)
         {
-            var db = new dbContext();
-            var SearchData = db.Users.Where(x => x.ID == Main.UserID).SingleOrDefault();
-            if (users.Password == SearchData.Password)
+            if (Main.IsLoggedIn)
             {
-                SearchData.Password = users.Email; // Email in a temp variable to store New Password
-                db.SaveChanges();
-                return View("Profile");
+                var db = new dbContext();
+                var SearchData = db.Users.Where(x => x.ID == Main.UserID).SingleOrDefault();
+                if (users.Password == SearchData.Password)
+                {
+                    SearchData.Password = users.Email; // Email in a temp variable to store New Password
+                    db.SaveChanges();
+                    return View("Profile");
+                }
+                else
+                {
+                    return View("ProfileIncorrect");
+                }
             }
             else
             {
-                return View("ProfileIncorrect");
+                return View("Login");
             }
 
         }

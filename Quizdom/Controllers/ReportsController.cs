@@ -11,17 +11,38 @@ namespace Quizdom.Controllers
         // GET: Reports
         public ActionResult Results()
         {
-            return View();
+            if (Main.IsLoggedIn)
+            {
+                return View();
+            }
+            else
+            {
+                return View("Login");
+            }
         }
 
         public ActionResult Result()
         {
-            return View();
+            if (Main.IsLoggedIn)
+            {
+                return View();
+            }
+            else
+            {
+                return View("Login");
+            }
         }
 
         public ActionResult Dashboard()
         {
-            return View();
+            if (Main.IsLoggedIn)
+            {
+                return View();
+            }
+            else
+            {
+                return View("Login");
+            }
         }
     }
 }
