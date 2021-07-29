@@ -301,6 +301,7 @@
     <Content Include="Views\Reports\Results.cshtml" />
     <Content Include="Views\Reports\Result.cshtml" />
     <Content Include="Views\Quiz\AboutUs.cshtml" />
+    <Content Include="Views\Reports\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

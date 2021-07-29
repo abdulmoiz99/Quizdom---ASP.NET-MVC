@@ -1,0 +1,186 @@
+﻿@model Quizdom.Models.Student
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_SideNavPanel.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0">Dashboard</h3><button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" onclick="PrintElem('print-element')"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</button>
+    </div>
+    <div id="print-element">
+        <div class="row">
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-primary py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Quizzes Created</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>@Main.GetTotalQuiz(Main.UserID)</span></div>
+                            </div>
+                            <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-success py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Questions Added</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>@Main.GetTotalQuestions(Main.UserID)</span></div>
+                            </div>
+                            <div class="col-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="LightGray" class="bi bi-question-lg" viewBox="0 0 16 16">
+                                    <path d="M3 4.075a.423.423 0 0 0 .43.44H4.9c.247 0 .442-.2.475-.445.159-1.17.962-2.022 2.393-2.022 1.222 0 2.342.611 2.342 2.082 0 1.132-.668 1.652-1.72 2.444-1.2.872-2.15 1.89-2.082 3.542l.005.386c.003.244.202.44.446.44h1.445c.247 0 .446-.2.446-.446v-.188c0-1.278.487-1.652 1.8-2.647 1.086-.826 2.217-1.743 2.217-3.667C12.667 1.301 10.393 0 7.903 0 5.645 0 3.17 1.053 3.001 4.075zm2.776 10.273c0 .95.758 1.652 1.8 1.652 1.085 0 1.832-.702 1.832-1.652 0-.985-.747-1.675-1.833-1.675-1.04 0-1.799.69-1.799 1.675z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-info py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Success Rate</span></div>
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-auto">
+                                        <div class="text-dark fw-bold h5 mb-0 me-3"><span>@Main.GetSuccessRate(Main.UserID)%</span></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-info" aria-valuenow="@Main.GetSuccessRate(Main.UserID)" aria-valuemin="0" aria-valuemax="100" style="width: @Main.GetSuccessRate(Main.UserID)%;"><span class="visually-hidden">@Main.GetSuccessRate(Main.UserID)%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="LightGray" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-warning py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col me-2">
+                                <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Students Attempted</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>@Main.GetTotalStudentsAttempted(Main.UserID)</span></div>
+                            </div>
+                            <div class="col-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="LightGray" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="text-primary fw-bold m-0">Grading System</h6>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="small fw-bold">Grade A<span class="float-end">@Main.GetScoreRange(Main.UserID, 90, 101)%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-success" aria-valuenow="@Main.GetScoreRange(Main.UserID, 90, 101)" aria-valuemin="0" aria-valuemax="100" style="width: @Main.GetScoreRange(Main.UserID, 90, 101)%;"><span class="visually-hidden">@Main.GetScoreRange(Main.UserID, 90, 101)%</span></div>
+                        </div>
+                        <h4 class="small fw-bold">Grade B<span class="float-end">@Main.GetScoreRange(Main.UserID, 75, 90)%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-info" aria-valuenow="@Main.GetScoreRange(Main.UserID, 75, 90)" aria-valuemin="0" aria-valuemax="100" style="width: @Main.GetScoreRange(Main.UserID, 75, 90)%;"><span class="visually-hidden">@Main.GetScoreRange(Main.UserID, 75, 90)%</span></div>
+                        </div>
+                        <h4 class="small fw-bold">Grade C<span class="float-end">@Main.GetScoreRange(Main.UserID, 60, 75)%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-primary" aria-valuenow="@Main.GetScoreRange(Main.UserID, 60, 75)" aria-valuemin="0" aria-valuemax="100" style="width: @Main.GetScoreRange(Main.UserID, 60, 75)%;"><span class="visually-hidden">@Main.GetScoreRange(Main.UserID, 60, 75)%</span></div>
+                        </div>
+                        <h4 class="small fw-bold">Grade D<span class="float-end">@Main.GetScoreRange(Main.UserID, 50, 60)%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-warning" aria-valuenow="@Main.GetScoreRange(Main.UserID, 50, 60)" aria-valuemin="0" aria-valuemax="100" style="width: @Main.GetScoreRange(Main.UserID, 50, 60)%;"><span class="visually-hidden">@Main.GetScoreRange(Main.UserID, 50, 60)%</span></div>
+                        </div>
+                        <h4 class="small fw-bold">Fail<span class="float-end">@Main.GetScoreRange(Main.UserID, 0, 50)%</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-danger" aria-valuenow="@Main.GetScoreRange(Main.UserID, 0, 50)" aria-valuemin="0" aria-valuemax="100" style="width: @Main.GetScoreRange(Main.UserID, 0, 50)%;"><span class="visually-hidden">@Main.GetScoreRange(Main.UserID, 0, 50)%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card textwhite bg-success text-white shadow">
+                            <div class="card-body">
+                                <p class="m-0">Grade A</p>
+                                <p class="text-white-50 small m-0">Score &#8805; 90%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card textwhite bg-info text-white shadow">
+                            <div class="card-body">
+                                <p class="m-0">Grade B</p>
+                                <p class="text-white-50 small m-0">90% &#62; Score &#8805; 75% </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card textwhite bg-primary text-white shadow">
+                            <div class="card-body">
+                                <p class="m-0">Grade C</p>
+                                <p class="text-white-50 small m-0">75% &#62; Score &#8805; 60%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card textwhite bg-warning text-white shadow">
+                            <div class="card-body">
+                                <p class="m-0">Grade D</p>
+                                <p class="text-white-50 small m-0">60% &#62; Score &#8805; 50%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card textwhite bg-danger text-white shadow">
+                            <div class="card-body">
+                                <p class="m-0">Fail</p>
+                                <p class="text-white-50 small m-0">Score &#60; 50%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function PrintElem(elem) {
+        var mywindow = window.open('', 'PRINT', 'height=720,width=1280');
+
+        mywindow.document.write('<html><head><meta charset = "utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>Report</title><link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"><link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css"><link rel="stylesheet" href="/assets/fonts/font-awesome.min.css"><link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css"><link rel="stylesheet" href="/assets/css/Features-Boxed.css"><link rel="stylesheet" href="/assets/css/Navigation-with-Button.css">');
+        mywindow.document.write('</head><body>');
+        mywindow.document.write('<h1>Report</h1><br/>');
+        mywindow.document.write(document.getElementById(elem).innerHTML);
+        mywindow.document.write('</body></html>');
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>
+

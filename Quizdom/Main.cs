@@ -24,7 +24,6 @@ namespace Quizdom
 
         public static string GetUserName()
         {
-            Username = "Abdul Moiz";
             return Username;
         }
 
@@ -80,6 +79,56 @@ namespace Quizdom
                 else found = false;
             }
             return randomString;       
+        }
+
+        public static int GetTotalQuiz(int userID) 
+        {
+            var db = new dbContext();
+            return db.Quiz.Where(q => q.User.ID == userID).Count();
+        }
+
+        public static int GetTotalQuestions(int userID) 
+        {
+            var db = new dbContext();
+            return db.Quiz.Where(q => q.User.ID == userID).Join(db.Questions, x => x.Id, y => y.Quiz.Id, (quiz, questions) => new { quizId = quiz.Id, questions = questions.Id }).Count();
+            
+        }
+
+        public static int GetTotalStudentsAttempted(int userID)
+        {
+            var db = new dbContext();
+            return db.Quiz.Where(q => q.User.ID == userID).Join(db.Students, x => x.Id, y => y.Quiz.Id, (quiz, students) => new { quizId = quiz.Id, students = students.Id }).Count();
+
+        }
+
+        public static double GetSuccessRate(int userID)
+        {
+            var studentsScore = new List<double>();
+            var db = new dbContext();
+            var quizIds = db.Quiz.Where(x => x.User.ID == userID).Select(q => q.Id).ToList();
+            foreach (var id in quizIds) 
+            {
+                double total = db.Questions.Where(q => q.Quiz.Id == id).Sum(x => x.Points);
+                studentsScore.AddRange(db.Students.Where(s => s.Quiz.Id == id).Select(x => x.Score / total * 100));
+            }
+            var passedStudents = studentsScore.Where(x => x >= 50).ToList();
+            return Math.Round(Convert.ToDouble(passedStudents.Count()) / Convert.ToDouble(studentsScore.Count()) * 100);
+
+        }
+
+        public static double GetScoreRange(int userID, double min, double max)
+        {
+            var studentsScore = new List<double>();
+            var db = new dbContext();
+            var quizIds = db.Quiz.Where(x => x.User.ID == userID).Select(q => q.Id).ToList();
+            foreach (var id in quizIds)
+            {
+                double total = db.Questions.Where(q => q.Quiz.Id == id).Sum(x => x.Points);
+                studentsScore.AddRange(db.Students.Where(s => s.Quiz.Id == id).Select(x => x.Score / total * 100));
+            }
+            var passedStudents = studentsScore.Where(x => x >= min && x < max).ToList();
+            return Math.Round(Convert.ToDouble(passedStudents.Count()) / Convert.ToDouble(studentsScore.Count()) * 100);
+
         }
     }
 

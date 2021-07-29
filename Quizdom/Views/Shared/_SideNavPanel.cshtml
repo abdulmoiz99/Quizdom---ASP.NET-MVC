@@ -30,7 +30,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href=@Url.Action("Dashboard", "Reports")><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href=@Url.Action("Quizes", "Quiz")><i class="fas fa-user"></i><span>Quizzes</span></a></li>
                     <li class="nav-item"><a class="nav-link" href=@Url.Action("Results", "Reports")><i class="fas fa-table"></i><span>Results</span></a></li>
                     <li class="nav-item"><a class="nav-link" href=@Url.Action("AboutUs", "Quiz")><i class="far fa-user-circle"></i><span>About Us</span></a></li>
@@ -48,7 +48,7 @@
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow">
-                                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown"><span class="d-none d-lg-inline me-2 text-gray-600 small">@Main.GetUserName()</span><img class="border rounded-circle img-profile" src="~/assets/img/dogs/image2.jpeg"></a>
+                                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown"><span class="d-none d-lg-inline me-2 text-gray-600 small">@Main.GetUserName()</span><img class="border rounded-circle img-profile" src="~/assets/img/avatars/naqqash.jpg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
                                         <a class="dropdown-item" href=@Url.Action("Profile", "Users")><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href='@Url.Action("Login", "Users")'><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
