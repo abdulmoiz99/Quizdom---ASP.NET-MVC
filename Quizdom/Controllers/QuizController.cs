@@ -46,113 +46,80 @@ namespace Quizdom.Controllers
         }
         public ActionResult StudentLogin()
         {
-            if (Main.IsLoggedIn)
-            {
-                return View();
-            }
-            else
-            {
-                return View("Login");
-            }
+
+            return View("Login");
         }
 
         public ActionResult StudentScore(Student student)
         {
-            if (Main.IsLoggedIn)
-            {
-                return View();
+            return View();
 
 
-                var db = new dbContext();
-                // get existing user with with a particular ID
-                var sub = db.Quiz.FirstOrDefault(x => x.Id == Main.QuizID);
-                student.Quiz = sub;
-                student.Date = DateTime.Now;
-                db.Students.Add(student);
-                db.SaveChanges();
+            var db = new dbContext();
+            // get existing user with with a particular ID
+            var sub = db.Quiz.FirstOrDefault(x => x.Id == Main.QuizID);
+            student.Quiz = sub;
+            student.Date = DateTime.Now;
+            db.Students.Add(student);
+            db.SaveChanges();
 
-                ViewBag.Score = student.Score;
+            ViewBag.Score = student.Score;
 
-                var total = db.Questions.Where(t => t.Quiz.Id == Main.QuizID).Sum(t => t.Points);
-
-
-                ViewBag.Total = total;
+            var total = db.Questions.Where(t => t.Quiz.Id == Main.QuizID).Sum(t => t.Points);
 
 
-                return View("StudentScore");
-            }
-            else
-            {
-                return View("Login");
-            }
+            ViewBag.Total = total;
+
+
+            return View("StudentScore");
+
         }
 
         public ActionResult ToggleStatus(Quiz _quiz)
         {
-            if (Main.IsLoggedIn)
-            {
-                var db = new dbContext();
-                var quiz = db.Quiz.FirstOrDefault(x => x.Id == _quiz.Id);
-                quiz.IsActive = !(quiz.IsActive);
-                db.SaveChanges();
-                return View("Quizes");
-            }
-            else
-            {
-                return View("Login");
-            }
-          
+            var db = new dbContext();
+            var quiz = db.Quiz.FirstOrDefault(x => x.Id == _quiz.Id);
+            quiz.IsActive = !(quiz.IsActive);
+            db.SaveChanges();
+            return View("Quizes");
+
+
         }
 
         public ActionResult DeleteQuiz(Quiz _quiz)
         {
-            if (Main.IsLoggedIn)
-            {
-                var db = new dbContext();
+            var db = new dbContext();
 
-                //Removing associated questions
-                List<Questions> questionsToRemove = db.Questions.Where(x => x.Quiz.Id == _quiz.Id).ToList();
-                foreach (var question in questionsToRemove) db.Questions.Remove(question);
+            //Removing associated questions
+            List<Questions> questionsToRemove = db.Questions.Where(x => x.Quiz.Id == _quiz.Id).ToList();
+            foreach (var question in questionsToRemove) db.Questions.Remove(question);
 
-                //Removing associated students
-                List<Student> studentsToRemove = db.Students.Where(x => x.Quiz.Id == _quiz.Id).ToList();
-                foreach (var student in studentsToRemove) db.Students.Remove(student);
+            //Removing associated students
+            List<Student> studentsToRemove = db.Students.Where(x => x.Quiz.Id == _quiz.Id).ToList();
+            foreach (var student in studentsToRemove) db.Students.Remove(student);
 
-                var quiz = db.Quiz.FirstOrDefault(x => x.Id == _quiz.Id);
-                if (quiz != null) db.Quiz.Remove(quiz);
-                db.SaveChanges();
-                return View("Quizes");
-            }
-            else
-            {
-                return View("Login");
-            }
-         
+            var quiz = db.Quiz.FirstOrDefault(x => x.Id == _quiz.Id);
+            if (quiz != null) db.Quiz.Remove(quiz);
+            db.SaveChanges();
+            return View("Quizes");
+
         }
 
         [HttpPost]
         public ActionResult StudentQuiz(Quiz quiz)
         {
-            if (Main.IsLoggedIn)
+            var db = new dbContext();
+            if (db.Quiz.Any(x => x.Link == quiz.Link && x.IsActive == true))
             {
-                var db = new dbContext();
-                if (db.Quiz.Any(x => x.Link == quiz.Link && x.IsActive == true))
-                {
-                    Main.QuizID = db.Quiz.Where(x => x.Link == quiz.Link).Select(x => x.Id).FirstOrDefault();
-                    Main.QuizTitle = db.Quiz.Where(x => x.Link == quiz.Link).Select(x => x.QuizTilte).FirstOrDefault();
-                    return View("StudentQuizInput");
+                Main.QuizID = db.Quiz.Where(x => x.Link == quiz.Link).Select(x => x.Id).FirstOrDefault();
+                Main.QuizTitle = db.Quiz.Where(x => x.Link == quiz.Link).Select(x => x.QuizTilte).FirstOrDefault();
+                return View("StudentQuizInput");
 
-                }
-                else
-                {
-                    return View("StudentLoginIncorrect");
-                }
             }
             else
             {
-                return View("Login");
+                return View("StudentLoginIncorrect");
             }
-           
         }
         [HttpPost]
         public ActionResult CreateQuiz(Quiz quiz)
@@ -178,7 +145,7 @@ namespace Quizdom.Controllers
             {
                 return View("Login");
             }
-         
+
         }
         [HttpPost]
         public ActionResult AddQuestion(Questions questions)
@@ -199,19 +166,12 @@ namespace Quizdom.Controllers
             {
                 return View("Login");
             }
-          
+
         }
 
         public ActionResult AboutUs()
         {
-            if (Main.IsLoggedIn)
-            {
                 return View();
-            }
-            else
-            {
-                return View("Login");
-            }
         }
     }
 }
