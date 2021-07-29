@@ -47,12 +47,11 @@ namespace Quizdom.Controllers
         public ActionResult StudentLogin()
         {
 
-            return View("Login");
+            return View();
         }
 
         public ActionResult StudentScore(Student student)
         {
-            return View();
 
 
             var db = new dbContext();
